@@ -8,13 +8,14 @@ to learn and complete this task.
 
 ## Assumptions
  * Kafka is already set up and running. Although I created a producer.
- * The Kafka topic and servers are provided via config variables.
+ * The Kafka topic and servers are provided via env variables.
 
 ## Getting Started
 * Clone the repository.
 * Create a virtual environment and activate it.
 * Install dependencies using `pip install -r requirements.txt`.
-* Set Kafka variables in `app/config.py` file.
+* Copy `.env.example` to `.env`
+* Set Kafka variables values in `.env` file.
 * Run the service using python `uvicorn app.main:app --reload`.
 * produce the user data to the producer using the following post endpoint
 `/produce/`.
