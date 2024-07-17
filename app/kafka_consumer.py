@@ -1,9 +1,17 @@
 # app/kafka_consumer.py
-from kafka import KafkaConsumer
 import json
+import os
 import threading
 import time
-from .config import KAFKA_BROKER_URL, KAFKA_TOPIC
+
+from kafka import KafkaConsumer
+from dotenv import load_dotenv
+
+load_dotenv()
+
+KAFKA_BROKER_URL = os.getenv("KAFKA_BROKER_URL")
+KAFKA_TOPIC = os.getenv("KAFKA_TOPIC")
+
 
 class KafkaConsumerService:
     def __init__(self, topic, broker_url):
@@ -46,5 +54,6 @@ class KafkaConsumerService:
                 if not self.running:
                     break
             time.sleep(1)  # Prevents CPU intensive loop if no messages
+
 
 kafka_consumer_service = KafkaConsumerService(KAFKA_TOPIC, KAFKA_BROKER_URL)
